@@ -161,3 +161,61 @@ code {
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+
+/* A window layout is not suitable for phones so... we just don't use a window (: */
+@media (max-width: 768px) {
+    body, html {
+        overflow: auto;
+    }
+
+    .pac-window {
+        height: auto;
+        min-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        border: none;
+    }
+
+    .pac-main {
+        flex-direction: column;
+    }
+
+    .pac-sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 15px;
+    }
+
+    .menu-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .menu-list li {
+        margin: 0 !important;
+    }
+
+    .scroll-body {
+        padding: 24px;
+    }
+
+    .dot-controls, .spacer {
+        display: none;
+    }
+
+    .pac-header {
+        justify-content: center;
+    }
+
+    .pac-footer {
+        padding: 20px;
+        position: relative;
+    }
+
+    .level-left + .level-right {
+        margin-top: 1.5rem;
+    }
+}
