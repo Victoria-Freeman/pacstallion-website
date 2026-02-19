@@ -2,95 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PacStallion</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    guest@pacstallion:~$
+    <a onclick="run('f',this)">./features.sh</a>
+    <a onclick="run('b',this)">./build.sh</a>
+    <a onclick="run('s',this)">./ls</a>
 
-    <div class="desktop-canvas"></div>
+    <div id="o"></div><span class="c">█</span>
 
-    <div class="pac-window container">
-        <header class="pac-header">
-            <div class="dot-controls">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
-            </div>
-            <div class="window-title">PacStallion</div>
-            <div class="spacer"></div>
-        </header>
+    <pre id="f" hidden>
+PACSTALLION FEATURES:
+------------------
+- Browse Pacstall packages via GUI
+- One-click install/remove
+- Know what needs an update
+- Real-time terminal output logs
+    </pre>
 
-        <div class="pac-main">
-            <aside class="pac-sidebar menu">
-                <p class="menu-label">Documentation</p>
-                <ul class="menu-list">
-                    <li><a href="#" class="is-active" data-section="sec-features">Features</a></li>
-                    <li><a href="#" data-section="sec-build">Building</a></li>
-                    <li><a href="#" data-section="sec-struct">Project Structure</a></li>
-                </ul>
-            </aside>
+    <pre id="b" hidden>
+BUILD INSTRUCTIONS:
+------------------
+$ git clone https://github.com/IMYdev/pacstallion.git
+$ cd pacstallion
+test:
+$ dotnet run --project src/pacstallion.csproj
+relese:
+$ dotnet publish src/pacstallion.csproj -c Release
 
-            <main class="pac-content">
-                <div class="scroll-body content" id="content-area">
-                    
-                    <div id="sec-features" class="readme-section active">
-                        <h1 class="title is-2">PacStallion</h1>
-                        <p class="subtitle is-5">The GUI for <a target="_blank" href="https://pacstall.dev/">Ubuntu's AUR</a></p>
-                        <hr>
-                        <h2>Features</h2>
-                        <ul>
-                            <li>Explore packages available in the Pacstall repositories.</li>
-                            <li>Easily install or remove packages.</li>
-                            <li>See which packages need to be updated.</li>
-                            <li>Runs Pacstall commands in the terminal for transparency.</li>
-                        </ul>
-                    </div>
+Note: .NET 10 SDK required.
+    </pre>
 
-                    <div id="sec-build" class="readme-section">
-                        <h2>Building</h2>
-                        <p><strong>.NET 10 SDK</strong> is required for developing this application.</p>
-                        <h4>Clone the repository</h4>
-                        <pre><code>git clone https://github.com/IMYdev/pacstallion.git
-cd pacstallion</code></pre>
-                        <h4>Build and Run</h4>
-                        <pre><code>dotnet run --project src/pacstallion.csproj</code></pre>
-                        <h4>Publish</h4>
-                        <pre><code>dotnet publish src/pacstallion.csproj -c Release</code></pre>
-                    </div>
-
-                    <div id="sec-struct" class="readme-section">
-                        <h2>Project Structure</h2>
-                        <ul>
-                            <li><code>src/</code>: Contains the source code and assets.</li>
-                            <li><code>LICENSE</code>: GPLv3 License.</li>
-                            <li><code>README.md</code>: Project documentation.</li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <footer class="pac-footer">
-                    <div class="level">
-                        <div class="level-left">
-                            <div class="level-item">
-                                <span class="license-tag">Project is licensed under GPLv3</span>
-                            </div>
-                        </div>
-                        <div class="level-right">
-                            <div class="level-item">
-                                <a target="_blank" href="https://github.com/IMYdev/pacstallion/releases" class="button is-info has-text-weight-bold">
-                                    Download Now
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </main>
-        </div>
-    </div>
+    <pre id="s" hidden>
+PROJECT STRUCTURE:
+------------------
+src/      - Application source code
+LICENSE   - GPLv3
+README.md - Documentation
+    </pre>
 
     <script src="script.js"></script>
 </body>

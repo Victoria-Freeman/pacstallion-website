@@ -1,25 +1,23 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.menu-list a');
-    const sections = document.querySelectorAll('.readme-section');
-    const scrollContainer = document.getElementById('content-area');
+const o = document.getElementById('o');
+let t;
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('data-section');
-            
-            if (!targetId) return;
-            
-            e.preventDefault();
+function run(id, el) {
+    clearTimeout(t);
 
-            navLinks.forEach(l => l.classList.remove('is-active'));
-            link.classList.add('is-active');
+    [...document.links].forEach(l => l.className = '');
+    el.className = 'a';
+    o.textContent = '';
 
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(targetId).classList.add('active');
+    const text = document.getElementById(id).textContent.trim();
 
-            scrollContainer.scrollTop = 0;
-        });
-    });
-});
+    (function type(i) {
+        if (i < text.length) {
+            o.textContent += text[i];
+            t = setTimeout(type, 5, i + 1);
+        }
+    })(0);
+}
+
+window.addEventListener('load', () =>
+run('f', document.links[0])
+);
