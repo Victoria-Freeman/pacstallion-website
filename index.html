@@ -1,49 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PacStallion</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PacStallion</title>
+<style>
+body{background:#000;color:#0f0;font:14px monospace;padding:10px;margin:0}
+a{color:#fff;text-decoration:none;cursor:pointer;display:inline-block;margin-right:10px}
+a:hover,.a{color:#0f0;text-decoration:underline}
+div{color:#aaa;white-space:pre-wrap;margin:10px 0;line-height:1.4}
+span{animation:a 1s step-end infinite}@keyframes a{50%{opacity:0}}
+@media(max-width:500px){a{display:block;margin:5px 0}}
+</style>
 </head>
 <body>
-    guest@pacstallion:~$
-    <a onclick="run('f',this)">./features.sh</a>
-    <a onclick="run('b',this)">./build.sh</a>
-    <a onclick="run('s',this)">./ls</a>
-
-    <div id="o"></div><span class="c">█</span>
-
-    <pre id="f" hidden>
+guest@pacstallion:~$
+<a onclick="run(0,this)">./features.sh</a>
+<a onclick="run(1,this)">./build.sh</a>
+<a onclick="run(2,this)">./ls</a>
+<div id='o'></div><span>█</span>
+<pre hidden>
 PACSTALLION FEATURES:
 ------------------
 - Browse Pacstall packages via GUI
 - One-click install/remove
 - Know what needs an update
-- Real-time terminal output logs
-    </pre>
-
-    <pre id="b" hidden>
+- Real-time terminal output logs</pre>
+<pre hidden>
 BUILD INSTRUCTIONS:
 ------------------
-$ git clone https://github.com/IMYdev/pacstallion.git
+$ git clone https://github.com/IMYdev/pacstallion.git  
 $ cd pacstallion
 test:
 $ dotnet run --project src/pacstallion.csproj
 relese:
 $ dotnet publish src/pacstallion.csproj -c Release
 
-Note: .NET 10 SDK required.
-    </pre>
-
-    <pre id="s" hidden>
+Note: .NET 10 SDK required.</pre>
+<pre hidden>
 PROJECT STRUCTURE:
 ------------------
 src/      - Application source code
 LICENSE   - GPLv3
-README.md - Documentation
-    </pre>
-
-    <script src="script.js"></script>
+README.md - Documentation</pre>
+<script defer>
+t=0
+const run=(i,el)=>{
+clearTimeout(t)
+for(l of document.links)l.className=''
+el.className='a'
+o.textContent=''
+text=document.body.children[i+5].textContent
+type=j=>j<text.length&&(o.textContent+=text[j],t=setTimeout(type,5,j+1))
+type(0)
+}
+run(0,document.links[0])
+</script>
 </body>
 </html>
